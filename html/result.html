@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=880" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<!--[if IE]><style type="text/css">.cast_list li{white-space:normal;}</style><![endif]-->
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
+
+var footer1, 
+	footer2,
+	flashPop,
+	timeoutId;
+
+addEvent(window, "load", initResult);
+function initResult(){
+	footer1 = document.getElementById("footer1");
+	footer2 = document.getElementById("footer2");
+	flashPop = document.getElementById("flashPop");
+	
+	addEvent(footer1, "mouseover", onPopOn);
+	addEvent(footer2, "mouseover", onPopOn);
+	addEvent(footer1, "mouseout", onPopOff);
+	addEvent(footer2, "mouseout", onPopOff);
+	addEvent(footer1, "click", openPopup);
+	addEvent(footer2, "click", openPopup);
+}
+
+function onPopOn(e){
+	timeoutId = setTimeout(openPopup, 300);
+}
+function onPopOff(e){
+	clearTimeout(timeoutId)
+}
+function openPopup(){
+	flashPop.style.display = "block";
+	callExternalInterface();
+}
+function closePop(){
+	flashPop.style.display = "none";
+}
+
+
+function callExternalInterface() {
+	thisMovie("helpSwf").callImage();
+}
+</script>
+</head>
+
+<body>
+
+<div id="flashPop"><script>FlashInsert('helpSwf', '../images/help.swf', '1024px', '768px', 'always', 'transparent', '', 'high', '');</script></div>
+
+<div>
+	<fieldset>
+		<legend></legend>
+		<input type="text" id="inpKeyword" value="종목명/종목코드를 입력하세요." />
+		<button id="btnSearch"></button>
+		<div id="surgestBox">
+			<ul id="ulSurgest">
+				<li></li>
+			</ul>
+		</div>
+	</fieldset>
+</div>
+
+<div>
+	<div>
+		<div>
+			<div></div>
+			<div>게이지</div>
+		</div>
+	</div>
+	
+	<div></div>
+</div>
+
+<div>
+	<img src="../images/img.gif" alt="" id="footer1" />
+	<img src="../images/img.gif" alt="" id="footer2" />
+</div>
+
+</body>
+</html>

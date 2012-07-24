@@ -1,47 +1,42 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi"/>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=880" />
 <title></title>
-<style>
-
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<!--[if IE]><style type="text/css">.cast_list li{white-space:normal;}</style><![endif]-->
+<style typee="text/css">
+* {margin:0; padding:0; list-style:none}
+fieldset {border:none; position:relative}
+legend {display:none}
+#micro {width:1024px; height:768px; background:url("../images/bg_main.jpg"); position:relative}
+#inpKeyword {background:none; border:none; position:absolute; top:333px; left:513px; width:281px; height:24px; font-size:14px; color:#fff}
+#btnSearch {position:absolute; top:326px; left:796px; width:40px; height:37px; background:none; border:none; cursor:pointer}
+#surgestBox {position:absolute; top:364px; left:514px; width:287px; height:181px; background:#fff; display:none}
 </style>
-</head>
-<body>
-asdf
-
 <script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript">
+</head>
 
+<body>
 
-</script>
+<div id="micro">
+	<form action="result.html" method="post">
+		<fieldset>
+			<legend>종목명/종목코드 검색</legend>
+			<input type="text" id="inpKeyword" value="종목명/종목코드를 입력하세요." />
+			<button id="btnSearch"></button>
+			<div id="surgestBox">
+				<ul id="ulSurgest">
+					<li></li>
+				</ul>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
