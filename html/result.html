@@ -1,88 +1,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=880" />
 <title></title>
 <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-<!--[if IE]><style type="text/css">.cast_list li{white-space:normal;}</style><![endif]-->
+<link href="http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb" rel="stylesheet" type="text/css" />
+<!--[if IE]><style type="text/css">img, div, input { behavior: url("../css/iepngfix.htc") }</style><![endif]-->
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/iepngfix_tilebg.js"></script>
+
 <script type="text/javascript">
 
-var footer1, 
-	footer2,
-	flashPop,
-	timeoutId;
-
-addEvent(window, "load", initResult);
-function initResult(){
-	footer1 = document.getElementById("footer1");
-	footer2 = document.getElementById("footer2");
-	flashPop = document.getElementById("flashPop");
+$(window).ready(function(){
+	initResult();
 	
-	addEvent(footer1, "mouseover", onPopOn);
-	addEvent(footer2, "mouseover", onPopOn);
-	addEvent(footer1, "mouseout", onPopOff);
-	addEvent(footer2, "mouseout", onPopOff);
-	addEvent(footer1, "click", openPopup);
-	addEvent(footer2, "click", openPopup);
-}
+	//≈ı¿⁄∏≈∑¬µµ
+	setAppear(57, "Unedrperform");
+	
+	//¡÷∞°¿ßƒ°
+	setPosition(100.00, "æÓ±˙");	
+});
 
-function onPopOn(e){
-	timeoutId = setTimeout(openPopup, 300);
-}
-function onPopOff(e){
-	clearTimeout(timeoutId)
-}
-function openPopup(){
-	flashPop.style.display = "block";
-	callExternalInterface();
-}
-function closePop(){
-	flashPop.style.display = "none";
-}
-
-
-function callExternalInterface() {
-	thisMovie("helpSwf").callImage();
-}
 </script>
 </head>
 
 <body>
-
-<div id="flashPop"><script>FlashInsert('helpSwf', '../images/help.swf', '1024px', '768px', 'always', 'transparent', '', 'high', '');</script></div>
-
-<div>
-	<fieldset>
-		<legend></legend>
-		<input type="text" id="inpKeyword" value="Ï¢ÖÎ™©Î™Ö/Ï¢ÖÎ™©ÏΩîÎìúÎ•º ÏûÖÎ†•ÌïòÏÑ∏Ïöî." />
-		<button id="btnSearch"></button>
-		<div id="surgestBox">
-			<ul id="ulSurgest">
-				<li></li>
-			</ul>
-		</div>
-	</fieldset>
+<div id="pop">
+	<div id="popup0"><img src="../images/pop_img0.png" alt="≈ı¿⁄∏≈∑¬µµ" /></div>
+	<div id="popup1"><img src="../images/pop_img1.png" alt="¡÷∞°¿ßƒ°" /></div>
+	<div id="bg"></div>
 </div>
 
-<div>
-	<div>
-		<div>
-			<div></div>
-			<div>Í≤åÏù¥ÏßÄ</div>
+<div id="resultWrap">
+	<form action="result.html" method="post">
+		<fieldset>
+			<legend>¡æ∏Ò∏Ì/¡æ∏Òƒ⁄µÂ ∞Àªˆ</legend>
+			<input type="text" id="inpKeyword" value="ªÔº∫¿¸¿⁄(00000)" />
+			<button id="btnSearch"></button>
+			<div id="surgestBox">
+				<ul id="ulSurgest">
+				</ul>
+				<div class="border"></div>
+			</div>
+		</fieldset>
+	</form>
+
+	<div id="wrap">
+		<div id="appeal"></div>
+		<div id="leftGage"><div></div></div>
+		<div id="appealValue">
+			<p id="aTen"></p>
+			<p id="aOne"></p>
+			<p id="aText"></p>
 		</div>
+		<div id="txtAppeal">SK¡ı±«¿« ≈ı¿⁄∏≈∑¬µµ¥¬ <span id="appealTextValue"></span>¿‘¥œ¥Ÿ.</div>
+		
+		<div id="position"></div>
+		<div id="rightGage"><div></div></div>
+		<div id="positionValue">
+			<p id="pHun"></p>
+			<p id="pTen"></p>
+			<p id="pOne"></p>
+			<p id="pDot"></p>
+			<p id="pFir"></p>
+			<p id="pSec"></p>
+			<p id="pText"></p>
+		</div>
+		<div id="txtPosition">¡÷∞°¿ßƒ°¥¬ <span id="positionTextValue"></span>¿‘¥œ¥Ÿ.</div>
+		
+		<button id="btnJoin">SRS ¡æ∏Ò∞Àªˆ √º«Ë«œ±‚</button>
 	</div>
 	
-	<div></div>
-</div>
-
-<div>
-	<img src="../images/img.gif" alt="" id="footer1" />
-	<img src="../images/img.gif" alt="" id="footer2" />
+	<div id="footer">
+		<img src="../images/bnnr0.png" alt="" id="footer0" /><img src="../images/bnnr1.png" alt="" id="footer1" />
+	</div>
 </div>
 
 </body>

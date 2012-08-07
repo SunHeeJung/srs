@@ -1,5 +1,63 @@
 @charset "utf-8";
 /************* 기본세팅 *************/
-*{margin:0;padding:0}
 
-#flashPop {display:none; position:absolute}
+* {margin:0; padding:0; list-style:none; font-family: 'NanumGothicWeb';}
+fieldset {border:none; position:relative}
+legend {display:none}
+body {background:#000}
+#micro {width:1024px; height:768px; background:url("../images/bg_main.jpg"); position:relative; margin:0 auto}
+#micro #inpKeyword {background:none; border:none; position:absolute; top:333px; left:513px; width:281px; height:24px; font-size:14px; line-height:25px; color:#fff; padding:0px 0}
+#micro #btnSearch {position:absolute; top:326px; left:796px; width:40px; height:37px; background:none; border:none; cursor:pointer}
+#micro #surgestBox {position:absolute; background:url("../images/bg_searchBoxBack.png") repeat-y; top:364px; left:514px; width:305px; display:none}
+#micro #surgestBox ul#ulSurgest {padding:0 5px 0px 2px}
+#micro #surgestBox ul#ulSurgest li {padding:10px 0; font-weight:bold; color:#fff}
+#micro #surgestBox ul#ulSurgest li span.stockNo {padding:0 10px}
+#micro #surgestBox ul#ulSurgest li span.keyword {color:#ffb35a}
+#micro #surgestBox ul#ulSurgest li:hover {background:#444;}
+#micro #surgestBox div.border {background:url("../images/bg_searchBox.png") no-repeat; width:306px; height:15px; position:absolute; bottom:-15px}
+
+
+#resultWrap {width:1024px; height:768px; background:url(../images/bg_result.png) no-repeat; position:relative; margin:0 auto}
+#inpKeyword {background:none; border:none; position:absolute; top:92px; left:379px; width:281px; height:24px; line-height:30px; font-size:14px; color:#666}
+#btnSearch {position:absolute; top:86px; left:701px; width:40px; height:37px; background:none; border:none; cursor:pointer}
+#surgestBox {position:absolute; background:url("../images/bg_searchBox1Back.png") repeat-y; top:126px; left:378px; width:301px; display:none; z-index:2000}
+#surgestBox ul#ulSurgest {padding:0 5px 0px 2px}
+#surgestBox ul#ulSurgest li {padding:10px 0; font-weight:bold; color:#4c4c4c}
+#surgestBox ul#ulSurgest li span.stockNo {padding:0 10px}
+#surgestBox ul#ulSurgest li span.keyword {color:#ffb35a}
+#surgestBox ul#ulSurgest li:hover {background:#e4e4e4}
+#surgestBox div.border {background:url("../images/bg_searchBox1.png") no-repeat; width:306px; height:15px; position:absolute; bottom:-15px}
+
+#leftGage {position:absolute; width:43px; height:192px; background:url("../images/bg_gage0.png") no-repeat; bottom:359px; left:37px; height:0px}
+#leftGage div {background:url("../images/ico_arrow0.png") no-repeat; width:11px; height:15px; position:absolute; right:15px; top:-5px}
+#rightGage {position:absolute; width:43px; height:192px; background:url("../images/bg_gage0.png") no-repeat; bottom:328px; right:10px; height:0px}
+#rightGage div {background:url("../images/ico_arrow1.png") no-repeat; width:11px; height:15px; position:absolute; left:-13px; top:-5px}
+#appeal {background:url("../images/img_sun0.png") no-repeat; width:243px; height:247px; position:absolute; top:177px; left:77px}
+#position {background:url("../images/img_human0.png") no-repeat; width:244px; height:248px; position:absolute; top:207px; right:250px}
+#txtAppeal {font-size:20px; font-weight:bold; color:#3a3a3a; position:absolute; top:416px; left:143px}
+#txtAppeal span {color:#ff7000}
+#appealValue {position:absolute; top:254px; left:356px}
+#appealValue p {background:url("../images/number.png") no-repeat; width:50px; height:95px; float:left}
+#appealValue #aTen {}
+#appealValue #aOne {}
+#appealValue #aText {background:none; font-size:24px; font-weight:bold; color:#f07901; width:auto; position:absolute; top:0; left:0; opacity:0}
+
+#txtPosition {font-size:20px; font-weight:bold; color:#3a3a3a; position:absolute; top:445px; left:685px}
+#txtPosition span {color:#d80a00}
+#positionValue {position:absolute; top:276px; right:82px}
+#positionValue p {background:url("../images/number.png") no-repeat; width:50px; height:95px; float:left}
+#positionValue #pHun {}
+#positionValue #pTen {}
+#positionValue #pOne {}
+#positionValue #pDot {background-position-x:-535px; width:16px}
+#positionValue #pFir {}
+#positionValue #pSen {}
+#positionValue #pText {background:none; clear:both; font-size:24px; font-weight:bold; color:#f07901; text-align:center; width:100%}
+#btnJoin {position:absolute; top:542px; left:407px; width:210px; height:45px; background:no-repeat; border:none; text-indent:-1000px; cursor:pointer}
+#footer {position:absolute; bottom:0}
+
+#pop #bg {background:#000; width:1024px; height:617px; position:absolute; z-index:1000; opacity:0; display:none}
+#pop #popup0 {position:absolute; top:107px; left:142px; z-index:1001; opacity:0; display:none}
+#pop #popup1 {position:absolute; top:147px; left:142px; z-index:1002; opacity:0; display:none}
+
+

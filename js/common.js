@@ -20,27 +20,32 @@ function init(){
 }
 
 function onFocus(){
-	if(inpKeyword.value == "ì¢…ëª©ëª…/ì¢…ëª©ì½”ë“œë¥¼ ìž…ë ¥í•˜ì„¸ìš”."){
-		inpKeyword.value = ""
+	if(inpKeyword.value == "Á¾¸ñ¸í/Á¾¸ñÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä."){
+		inpKeyword.value = "";
 	}
 }
 function onBlur(){
 	if(inpKeyword.value == ""){
-		inpKeyword.value = "ì¢…ëª©ëª…/ì¢…ëª©ì½”ë“œë¥¼ ìž…ë ¥í•˜ì„¸ìš”."
+		inpKeyword.value = "Á¾¸ñ¸í/Á¾¸ñÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.";
 	}
-	//surgestBox.style.display = "none";
+	setTimeout(function(){surgestBox.style.display = "none"}, 500);
 }
 function onSurgest(){
 	var keywordList = '';
-	for(var i=0; i<10; i++){
-		keywordList += '<li onclick="selectKeyword(this)">'+inpKeyword.value+'d</li>';
+		
+	for(var i=0; i<3; i++){
+		stockNo = "0000";
+		keyword = inpKeyword.value;
+		searchWord = "¿£Å©¸°"
+		keywordList += '<li onclick="selectKeyword(this)"><span class="stockNo">'+stockNo+'</span><span class="keyword">'+keyword+'</span>'+searchWord+'</li>';
 	}
 	ulSurgest.innerHTML = keywordList;
 	surgestBox.style.display = "block";
 }
 function selectKeyword(e){
-	inpKeyword.value = e.innerHTML;
+	inpKeyword.value = e.querySelector(".keyword").innerHTML;
 	surgestBox.style.display = "none";
+	alert(e.querySelector(".keyword").innerHTML)
 }
 function onSearch(){
 	keyword = inpKeyword.value;
@@ -58,29 +63,90 @@ function addEvent(obj, type, fn){
 	}
 }
 
-function thisMovie(movieName) {
-	if (navigator.appName.indexOf("Microsoft") != -1) {
-		return window[movieName]
-	}
-	else {
-		return document[movieName]
-	}
+
+//result
+function initResult(){
+	$("#footer0").mouseover(function(e){
+		$("#bg").css("display", "block");
+		$("#popup0").css("display", "block");
+		$("#bg").animate({
+			opacity:.5
+		}, 500)
+		$("#popup0").animate({
+			opacity:1
+		}, 500)
+	});
+	
+	$("#footer0").mouseout(function(e){
+		$("#bg").css("display", "none");
+		$("#popup0").css("opacity", "0").css("display", "none");
+	});
+	
+	$("#footer1").mouseover(function(e){
+		$("#bg").css("display", "block");
+		$("#popup1").css("display", "block");
+		$("#bg").animate({
+			opacity:.5
+		}, 500)
+		$("#popup1").animate({
+			opacity:1
+		}, 500)
+	});
+	
+	$("#footer1").mouseout(function(e){
+		$("#bg").css("display", "none");
+		$("#popup1").css("opacity", "0").css("display", "none");
+	});
+	
+	$("#aText").animate({opacity:0}, 1);
+	setTimeout(function(){
+		var posX = parseInt($("#appealValue").css("width"))/2 - parseInt($("#aText").css("width"))/2
+		$("#aText").css("top", "100px").css("left", posX+"px").animate({opacity:1}, 500);
+	}, 500)
+	
 }
 
-function FlashInsert(FlashIDName, FlashFileName, FlashWidth, FlashHeight, DNSSetting, WMODESetting, FlashBGColor, QSetting, FlashAlign){
-	document.write('<OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"');
-	document.write('CODEBASE="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab#version=8,0,22,0" ');
-	document.write(' ID="'+FlashIDName+'" WIDTH="' + FlashWidth + '" HEIGHT="' + FlashHeight + '" ALIGN="'+FlashAlign+'">');
-	document.write('<PARAM NAME="movie" VALUE="'+ FlashFileName +'">');
-	document.write('<PARAM NAME="quality" VALUE="'+QSetting+'">');
-	document.write('<PARAM NAME="bgcolor" VALUE="'+FlashBGColor+'">');
-	document.write('<PARAM NAME="wmode" VALUE="'+WMODESetting+'">');
-	document.write('<PARAM NAME="allowFullScreen" VALUE="true">');
-	document.write('<PARAM NAME="allowScriptAccess" VALUE="'+DNSSetting+'">');
-	document.write('<EMBED SRC="'+ FlashFileName +'"  NAME="'+FlashIDName+'"');
-	document.write(' WIDTH="' + FlashWidth + '" HEIGHT="' + FlashHeight + '" QUALITY="'+QSetting+'" BGCOLOR="'+FlashBGColor+'"');
-	document.write(' ALLOWSCRIPTACCESS="'+DNSSetting+'" ALIGN="'+FlashAlign+'" WMODE="'+WMODESetting+'" TYPE="application/x-shockwave-flash" allowFullScreen="true"');
-	document.write(' PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer" >');
-	document.write('</EMBED>');
-	document.write('</OBJECT>');
+function setAppear(_val, _name){
+	var value = _val * 1.8,
+		aTen = -1 * _val.toString().substr(0,1) * 52,
+		aOne = -1 * _val.toString().substr(1,1) * 52;
+	$("#appealTextValue").text(_val);
+	$("#aText").text(_name);
+	$("#leftGage").animate({
+		height:value
+	}, 2000);
+	
+	$("#aTen").css("backgroundPositionX", aTen+"px");
+	$("#aOne").css("backgroundPositionX", aOne+"px");
+}
+
+function setPosition(_val, _name){
+	var value = _val * 1.8;
+	if(_val.toString().split(".")[0].length == 2){
+		var pTen = -1 * _val.toString().substr(0,1) * 52,
+			pOne = -1 * _val.toString().substr(1,1) * 52,
+			pFir = -1 * _val.toString().substr(3,1) * 52,
+			pSec = -1 * _val.toString().substr(4,1) * 52;
+	}else if(_val.toString().split(".")[0].length == 3){
+		var pHun = -1 * _val.toString().substr(0,1) * 52,
+			pTen = -1 * _val.toString().substr(1,1) * 52,
+			pOne = -1 * _val.toString().substr(2,1) * 52,
+			pFir = -1 * _val.toString().substr(4,1) * 52,
+			pSec = -1 * _val.toString().substr(5,1) * 52;
+	}
+	$("#positionTextValue").text(_name+"¼öÁØ");
+	$("#pText").text(_name);
+	$("#rightGage").animate({
+		height:value
+	}, 2000);
+	
+	if(_val.toString().substr(0,1) == "1"){
+		$("#pHun").css("backgroundPositionX", pHun+"px");
+	}else{
+		$("#pHun").css("display", "none");
+	}
+	$("#pTen").css("backgroundPositionX", pTen+"px");
+	$("#pOne").css("backgroundPositionX", pOne+"px");
+	$("#pFir").css("backgroundPositionX", pFir+"px");
+	$("#pSec").css("backgroundPositionX", pSec+"px");
 }
