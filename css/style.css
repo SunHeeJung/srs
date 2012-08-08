@@ -30,8 +30,10 @@ body {background:#000}
 
 #leftGage {position:absolute; width:43px; height:192px; background:url("../images/bg_gage0.png") no-repeat; bottom:359px; left:37px; height:0px}
 #leftGage div {background:url("../images/ico_arrow0.png") no-repeat; width:11px; height:15px; position:absolute; right:15px; top:-5px}
+#leftGage div.cap {width:14px; height:11px; background:url(../images/bg_gage1Cap.png) no-repeat; top:-10px; left:0}
 #rightGage {position:absolute; width:43px; height:192px; background:url("../images/bg_gage0.png") no-repeat; bottom:328px; right:10px; height:0px}
 #rightGage div {background:url("../images/ico_arrow1.png") no-repeat; width:11px; height:15px; position:absolute; left:-13px; top:-5px}
+#rightGage div.cap {width:14px; height:11px; background:url(../images/bg_gage1Cap.png) no-repeat; top:-10px; left:0}
 #appeal {background:url("../images/img_sun0.png") no-repeat; width:243px; height:247px; position:absolute; top:177px; left:77px}
 #position {background:url("../images/img_human0.png") no-repeat; width:244px; height:248px; position:absolute; top:207px; right:250px}
 #txtAppeal {font-size:20px; font-weight:bold; color:#3a3a3a; position:absolute; top:416px; left:143px}
@@ -53,9 +55,10 @@ body {background:#000}
 #positionValue #pFir {}
 #positionValue #pSen {}
 #positionValue #pText {background:none; clear:both; font-size:24px; font-weight:bold; color:#f07901; text-align:center; width:100%}
-#btnJoin {position:absolute; top:542px; left:407px; width:210px; height:45px; background:no-repeat; border:none; text-indent:-1000px; cursor:pointer}
+#btnJoin {position:absolute; top:542px; left:407px; width:215px; height:45px; background:no-repeat; border:none; text-indent:-1000px; cursor:pointer}
 #footer {position:absolute; bottom:0}
 
+#pop {position:relative; width:1024px; margin:0 auto}
 #pop #bg {background:#000; width:1024px; height:617px; position:absolute; z-index:1000; opacity:0; display:none}
 #pop #popup0 {position:absolute; top:107px; left:142px; z-index:1001; opacity:0; display:none}
 #pop #popup1 {position:absolute; top:147px; left:142px; z-index:1002; opacity:0; display:none}

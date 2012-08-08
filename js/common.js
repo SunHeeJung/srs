@@ -43,9 +43,9 @@ function onSurgest(){
 	surgestBox.style.display = "block";
 }
 function selectKeyword(e){
-	inpKeyword.value = e.querySelector(".keyword").innerHTML;
+	inpKeyword.value = e.getElementsByTagName("span")[1].innerHTML;
 	surgestBox.style.display = "none";
-	alert(e.querySelector(".keyword").innerHTML)
+	alert(e.getElementsByTagName("span")[1].innerHTML)
 }
 function onSearch(){
 	keyword = inpKeyword.value;
@@ -71,10 +71,10 @@ function initResult(){
 		$("#popup0").css("display", "block");
 		$("#bg").animate({
 			opacity:.5
-		}, 500)
+		}, 0)
 		$("#popup0").animate({
 			opacity:1
-		}, 500)
+		}, 0)
 	});
 	
 	$("#footer0").mouseout(function(e){
@@ -87,10 +87,10 @@ function initResult(){
 		$("#popup1").css("display", "block");
 		$("#bg").animate({
 			opacity:.5
-		}, 500)
+		}, 0)
 		$("#popup1").animate({
 			opacity:1
-		}, 500)
+		}, 0)
 	});
 	
 	$("#footer1").mouseout(function(e){
@@ -107,7 +107,10 @@ function initResult(){
 }
 
 function setAppear(_val, _name){
-	var value = _val * 1.8,
+	if(_val != "100"){
+		$("#leftGage .cap").css("display", "none")
+	}
+	var value = _val * 1.9,
 		aTen = -1 * _val.toString().substr(0,1) * 52,
 		aOne = -1 * _val.toString().substr(1,1) * 52;
 	$("#appealTextValue").text(_val);
@@ -121,7 +124,10 @@ function setAppear(_val, _name){
 }
 
 function setPosition(_val, _name){
-	var value = _val * 1.8;
+	if(_val != "100"){
+		$("#rightGage .cap").css("display", "none")
+	}
+	var value = _val * 1.9;
 	if(_val.toString().split(".")[0].length == 2){
 		var pTen = -1 * _val.toString().substr(0,1) * 52,
 			pOne = -1 * _val.toString().substr(1,1) * 52,
