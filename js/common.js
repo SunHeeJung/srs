@@ -107,9 +107,6 @@ function initResult(){
 }
 
 function setAppear(_val, _name){
-	if(_val != "100"){
-		$("#leftGage .cap").css("display", "none")
-	}
 	var value = _val * 1.9,
 		aTen = -1 * _val.toString().substr(0,1) * 52,
 		aOne = -1 * _val.toString().substr(1,1) * 52;
@@ -117,16 +114,20 @@ function setAppear(_val, _name){
 	$("#aText").text(_name);
 	$("#leftGage").animate({
 		height:value
-	}, 2000);
+	}, 2000, function(){
+		$("#leftGage .cap").css("display", "block").animate({
+			opacity:1
+		}, 1000)
+		$("#leftGage div:first-child").animate({
+			top:-17
+		}, 1000)
+	});
 	
 	$("#aTen").css("backgroundPositionX", aTen+"px");
 	$("#aOne").css("backgroundPositionX", aOne+"px");
 }
 
 function setPosition(_val, _name){
-	if(_val != "100"){
-		$("#rightGage .cap").css("display", "none")
-	}
 	var value = _val * 1.9;
 	if(_val.toString().split(".")[0].length == 2){
 		var pTen = -1 * _val.toString().substr(0,1) * 52,
@@ -144,7 +145,14 @@ function setPosition(_val, _name){
 	$("#pText").text(_name);
 	$("#rightGage").animate({
 		height:value
-	}, 2000);
+	}, 2000, function(){
+		$("#rightGage .cap").css("display", "block").animate({
+			opacity:1
+		}, 1000)
+		$("#rightGage div:first-child").animate({
+			top:-17
+		}, 1000)
+	});
 	
 	if(_val.toString().substr(0,1) == "1"){
 		$("#pHun").css("backgroundPositionX", pHun+"px");
