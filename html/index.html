@@ -1,111 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=880" />
 <title></title>
 <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-<!--[if IE]><style type="text/css">.cast_list li{white-space:normal;}</style><![endif]-->
-
-
-<style type="text/css">
-.mouseOut {
-background: #5c5c5c;
-}
-.mouseOver {
-background: #4c4c4c;
-}
-</style>
-
-
 <link href="http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb" rel="stylesheet" type="text/css" />
+<!--[if IE]><style type="text/css">.cast_list li{white-space:normal;}</style><![endif]-->
+<style typee="text/css">
+
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
-<script language="javascript" src="http://www.sks.co.kr/renewal/js/cjmaster.js"></script>
-<script type="text/javascript" src="http://www.sks.co.kr/renewal/js/jquery.js"></script>
-
-
-<script type="text/javascript">
-$(function() {
-	$("#micro").hide();
-	$("#micro").fadeIn(1000); 
-});
-
-function _getSrsData() {
-	if ($("#inpKeyword").val() == "종목명/종목코드를 입력하세요.") {
-		alert("종목명/종목코드를 입력하세요.");
-	} else {
-		var jname = $("#jname").val();
-		var jcode = $("#jcode").val();
-		
-		var url = "srs_intro_json.jsp?jname=" + jname + "&jcode=" + jcode;
-		
-	    $.getJSON(url, function(data) {
-	    	if(data[0].name == "DNF") {
-	    		alert("종목명을 정확히 선택해 주십시오.");
-	    		return;
-	    	} else {
-				$("#totalnum").val(data[0].totalnum);
-				$("#position").val(data[0].position);
-				$("#totalnum_img").val(data[0].totalnum_img);
-				$("#position_img").val(data[0].position_img);
-				$("#position_text").val(data[0].position_text);
-				$("#totalnum_text").val(data[0].totalnum_text);
-
-	    		_goResultView();
-	    	}
-	    });
-	}
-}
-
-function _goResultView() {
-	frm = document.form1;
-	frm.method = "GET";
-	frm.action = "result.jsp";
-	frm.submit();
-}
-
-</script>
-
-
 </head>
 
 <body>
 
-
-<form name="form1">
-	<input type="hidden" id="jcode" name="jcode">
-	<input type="hidden" id="jname" name="jname">
-
-	<input type="hidden" id="totalnum" name="totalnum">
-	<input type="hidden" id="position" name="position">
-	<input type="hidden" id="totalnum_img" name="totalnum_img">
-	<input type="hidden" id="position_img" name="position_img">
-	<input type="hidden" id="position_text" name="position_text">
-	<input type="hidden" id="totalnum_text" name="totalnum_text">
-</form>
-
-
-
-	<div id="micro">
-
-			
-			<fieldset>
-				<legend>종목명/종목코드 검색</legend>
-				<input type="text" id="inpKeyword" value="종목명/종목코드를 입력하세요." />
-				<button id="btnSearch" onclick="_getSrsData()"></button>
-				<div id="surgestBox">
-					<ul id="ulSurgest">
-					</ul>
-					<div class="border"></div>
-				</div>
-			</fieldset>
-		
-	</div>
-
-
+<div id="micro">
+	<form action="result.html" method="post">
+		<fieldset>
+			<legend>종목명/종목코드 검색</legend>
+			<input type="text" id="inpKeyword" value="종목명/종목코드를 입력하세요." />
+			<button id="btnSearch"></button>
+			<div id="surgestBox">
+				<div class="cap"></div>
+				<ul id="ulSurgest">
+				</ul>
+				<div class="border"></div>
+			</div>
+		</fieldset>
+	</form>
+</div>
 
 </body>
 </html>
