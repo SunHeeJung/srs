@@ -107,52 +107,49 @@ function initResult(){
 }
 
 function setAppear(_val, _name){
-	var value = _val * 1.9,
-		aTen = -1 * _val.toString().substr(0,1) * 52,
-		aOne = -1 * _val.toString().substr(1,1) * 52;
+	var value = _val * 2.03;
+		
+	if(_val.toString().split(".")[0].length == 3){
+		aHun = -1 * _val.toString().substr(0,1) * 40;
+		aTen = -1 * _val.toString().substr(1,1) * 40;
+		aOne = -1 * _val.toString().substr(2,1) * 40;
+	}else{
+		aTen = -1 * _val.toString().substr(0,1) * 40;
+		aOne = -1 * _val.toString().substr(1,1) * 40;
+		$("#aHun").css("display", "none");
+	}
 	$("#appealTextValue").text(_val);
 	$("#aText").text(_name);
 	$("#leftGage").animate({
 		height:value
-	}, 2000, function(){
-		$("#leftGage .cap").css("display", "block").animate({
-			opacity:1
-		}, 1000)
-		$("#leftGage div:first-child").animate({
-			top:-17
-		}, 1000)
-	});
+	}, 2000);
 	
+	$("#aHun").css("backgroundPositionX", aHun+"px");
 	$("#aTen").css("backgroundPositionX", aTen+"px");
 	$("#aOne").css("backgroundPositionX", aOne+"px");
 }
 
 function setPosition(_val, _name){
-	var value = _val * 1.9;
+	var value = _val * 2.03;
 	if(_val.toString().split(".")[0].length == 2){
-		var pTen = -1 * _val.toString().substr(0,1) * 52,
-			pOne = -1 * _val.toString().substr(1,1) * 52,
-			pFir = -1 * _val.toString().substr(3,1) * 52,
-			pSec = -1 * _val.toString().substr(4,1) * 52;
+		var pTen = -1 * _val.toString().substr(0,1) * 40,
+			pOne = -1 * _val.toString().substr(1,1) * 40,
+			pFir = -1 * _val.toString().substr(3,1) * 40,
+			pSec = -1 * _val.toString().substr(4,1) * 40;
 	}else if(_val.toString().split(".")[0].length == 3){
-		var pHun = -1 * _val.toString().substr(0,1) * 52,
-			pTen = -1 * _val.toString().substr(1,1) * 52,
-			pOne = -1 * _val.toString().substr(2,1) * 52,
-			pFir = -1 * _val.toString().substr(4,1) * 52,
-			pSec = -1 * _val.toString().substr(5,1) * 52;
+		var pHun = -1 * _val.toString().substr(0,1) * 40,
+			pTen = -1 * _val.toString().substr(1,1) * 40,
+			pOne = -1 * _val.toString().substr(2,1) * 40;
+			$("#pDot").css("display", "none");
+			$("#pFir").css("display", "none");
+			$("#pSec").css("display", "none");
+			$("#positionValue").css("right", "130px")
 	}
 	$("#positionTextValue").text(_name+"ผ๖มุ");
 	$("#pText").text(_name);
 	$("#rightGage").animate({
 		height:value
-	}, 2000, function(){
-		$("#rightGage .cap").css("display", "block").animate({
-			opacity:1
-		}, 1000)
-		$("#rightGage div:first-child").animate({
-			top:-17
-		}, 1000)
-	});
+	}, 2000);
 	
 	if(_val.toString().substr(0,1) == "1"){
 		$("#pHun").css("backgroundPositionX", pHun+"px");
